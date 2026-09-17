@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAKS Doors — Premium Wooden Door Sets &amp; Frames</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  =======================================================================
+  IMAGES: all photos are from Unsplash (free license, no attribution
+  required) and load live from images.unsplash.com. To use your OWN photo
+  anywhere, just change the url(...) in that element's background-image.
+  BRAND: search "MAKS Doors" to rename. CONTACT: see #contact + footer.
+  =======================================================================
+-->
+<style>
+  :root{
+    --ink:#2c2015;--charcoal:#22392d;--paper:#f4ecda;--paper-2:#ece0ca;
+    --gold:#a9763c;--gold-deep:#875a29;--line:rgba(44,32,21,.14);
+    --line-light:rgba(255,255,255,.16);--muted:#6f6151;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.06;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 30px}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep)}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14px;padding:13px 26px;border-radius:2px;background:var(--gold);color:#fff;border:1px solid var(--gold);transition:.2s;cursor:pointer}
+  .btn:hover{background:var(--gold-deep);border-color:var(--gold-deep)}
+  .btn.outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+  .btn.outline:hover{background:rgba(255,255,255,.12)}
+  .btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+  .btn.dark:hover{background:#000}
+  .explore{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--gold-deep);display:inline-flex;align-items:center;gap:7px}
+  .explore span{transition:.2s}
+  a:hover .explore span{transform:translateX(4px)}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:50;background:var(--charcoal);color:#f4efe6;border-bottom:1px solid var(--line-light)}
+  .topbar{font-size:12px;color:rgba(244,239,230,.7);border-bottom:1px solid var(--line-light)}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:36px}
+  .topbar .r{display:flex;gap:20px}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:11px}
+  .logo-glyph{width:34px;height:34px}
+  .logo .name{font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:.06em}
+  .logo .name b{color:var(--gold)}
+  .menu{display:flex;align-items:center;gap:30px}
+  .menu>li{list-style:none;position:relative}
+  .menu>li>a{font-size:14.5px;font-weight:500;color:#e9e2d5;padding:26px 0;display:inline-block}
+  .menu>li>a:hover{color:#fff}
+  .caret{margin-left:5px;font-size:10px;opacity:.7}
+  .dropdown{position:absolute;top:100%;left:-16px;background:#fff;color:var(--ink);min-width:250px;border-radius:3px;box-shadow:0 24px 50px -18px rgba(0,0,0,.4);padding:8px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s}
+  .menu>li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+  .dropdown a{display:block;padding:11px 14px;font-size:14px;border-radius:2px}
+  .dropdown a:hover{background:var(--paper-2);color:var(--gold-deep)}
+  .nav-cta{display:flex;align-items:center;gap:16px}
+  .hamburger{display:none;background:none;border:0;color:#f4efe6;font-size:26px;cursor:pointer}
+  @media(max-width:960px){.menu,.topbar,.nav-cta .btn{display:none}.hamburger{display:block}}
+
+  .drawer{position:fixed;inset:0;z-index:60;background:var(--charcoal);color:#f4efe6;padding:26px 30px;transform:translateX(100%);transition:.3s;overflow:auto}
+  .drawer.open{transform:translateX(0)}
+  .drawer .x{position:absolute;top:20px;right:26px;font-size:30px;background:none;border:0;color:#f4efe6}
+  .drawer a{display:block;padding:14px 0;font-size:18px;border-bottom:1px solid var(--line-light)}
+  .drawer .grp{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:24px}
+
+  /* HERO */
+  .hero{position:relative;height:min(88vh,780px);overflow:hidden;background:var(--ink)}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
+  .slide.active{opacity:1}
+  .slide .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .slide .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,13,8,.86) 0%,rgba(18,13,8,.55) 42%,rgba(18,13,8,.12) 100%)}
+  .s1 .bg{background-image:url('https://images.unsplash.com/photo-1630579083524-e3ac854edb46?auto=format&fit=crop&w=1600&q=75')}
+  .s2 .bg{background-image:url('https://images.unsplash.com/photo-1536160885591-301854e2ed04?auto=format&fit=crop&w=1600&q=75')}
+  .s3 .bg{background-image:url('https://images.unsplash.com/photo-1720265017851-c0e2d2f9c81e?auto=format&fit=crop&w=1600&q=75')}
+  .hero .content{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;justify-content:center}
+  .hero .eyebrow{color:var(--gold)}
+  .hero h1{color:#fbf7ef;font-size:clamp(40px,6.6vw,80px);font-weight:500;max-width:15ch;margin:18px 0 0}
+  .hero p{color:rgba(251,247,239,.88);font-size:clamp(16px,2vw,20px);max-width:46ch;margin-top:20px;font-family:'Fraunces',serif;font-style:italic;font-weight:400}
+  .hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .dots{position:absolute;bottom:28px;left:0;right:0;z-index:4;display:flex;gap:10px;justify-content:center}
+  .dots button{width:34px;height:3px;border:0;background:rgba(255,255,255,.35);cursor:pointer;transition:.2s}
+  .dots button.on{background:var(--gold);width:52px}
+
+  section{padding:96px 0}
+  .sec-title{font-size:clamp(30px,4vw,46px);font-weight:500}
+  .sec-head{margin-bottom:48px;max-width:640px}
+  .sec-head .eyebrow{margin-bottom:14px;display:block}
+  .sec-head p{color:var(--muted);margin-top:16px;font-size:17px}
+
+  /* PRODUCTS */
+  .prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  @media(max-width:760px){.prod-grid{grid-template-columns:1fr}}
+  .prod{position:relative;border-radius:5px;overflow:hidden;min-height:400px;display:flex;align-items:flex-end;background:#2e2016}
+  .prod .photo{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s ease}
+  .prod:hover .photo{transform:scale(1.05)}
+  .prod .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,10,.1) 0%,rgba(20,15,10,.88) 100%)}
+  .p-fire{background-image:url('https://images.unsplash.com/photo-1544641724-73f0d1bee38b?auto=format&fit=crop&w=900&q=75')}
+  .p-designer{background-image:url('https://images.unsplash.com/photo-1503898362-59e068e7f9d8?auto=format&fit=crop&w=900&q=75')}
+  .p-speciality{background-image:url('https://images.unsplash.com/photo-1583041398200-09b2205f6cf0?auto=format&fit=crop&w=900&q=75')}
+  .p-dura{background-image:url('https://images.unsplash.com/photo-1530982937671-bc00141b5d79?auto=format&fit=crop&w=900&q=75')}
+  .prod .info{position:relative;z-index:2;padding:30px;color:#fbf7ef}
+  .prod .info h3{font-size:26px;color:#fff}
+  .prod .info p{font-size:14.5px;color:rgba(251,247,239,.85);margin:10px 0 16px;max-width:42ch}
+  .prod .info .explore{color:#e6c193}
+
+  /* SPACES */
+  #spaces{background:var(--paper-2)}
+  .spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:860px){.spaces-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.spaces-grid{grid-template-columns:1fr}}
+  .space{position:relative;height:280px;border-radius:5px;overflow:hidden;display:flex;align-items:flex-end;background-size:cover;background-position:center}
+  .space::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.68));transition:.3s}
+  .space:hover::after{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.8))}
+  .space .lbl{position:relative;z-index:2;padding:22px;color:#fff;font-family:'Fraunces',serif;font-size:24px;font-weight:500}
+  .space .lbl small{display:block;font-family:'Inter';font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:4px}
+  .sp1{background-image:url('https://images.unsplash.com/photo-1682184805271-11671b7ecf4c?auto=format&fit=crop&w=700&q=70')}
+  .sp2{background-image:url('https://images.unsplash.com/photo-1594873604892-b599f847e859?auto=format&fit=crop&w=700&q=70')}
+  .sp3{background-image:url('https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=700&q=70')}
+  .sp4{background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=70')}
+  .sp5{background-image:url('https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=700&q=70')}
+  .sp6{background-image:url('https://images.unsplash.com/photo-1646987916641-1f3c8992daa2?auto=format&fit=crop&w=700&q=70')}
+
+  /* VISUALIZER */
+  #visualizer{background:var(--charcoal);color:#f4efe6}
+  .vz{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+  @media(max-width:840px){.vz{grid-template-columns:1fr;gap:36px}}
+  #visualizer .eyebrow{color:var(--gold)}
+  #visualizer h2{color:#fbf7ef;font-size:clamp(30px,4vw,44px);margin:14px 0 18px}
+  #visualizer p{color:rgba(251,247,239,.78);max-width:44ch;margin-bottom:26px}
+  .vz-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .vz-tile{aspect-ratio:3/4;border-radius:4px;background-size:cover;background-position:center;border:1px solid var(--line-light)}
+  .vt1{background-image:url('https://images.unsplash.com/photo-1490717164730-d639c415a82a?auto=format&fit=crop&w=400&q=70')}
+  .vt2{background-image:url('https://images.unsplash.com/photo-1511366837949-90f9fdaadf6b?auto=format&fit=crop&w=400&q=70')}
+  .vt3{background-image:url('https://images.unsplash.com/photo-1542020383883-6c6b2a343807?auto=format&fit=crop&w=400&q=70')}
+  .vt4{background-image:url('https://images.unsplash.com/photo-1518882542732-7b2826f7b1bd?auto=format&fit=crop&w=400&q=70')}
+  .vt5{background-image:url('https://images.unsplash.com/photo-1610177534644-34d881503b83?auto=format&fit=crop&w=400&q=70')}
+  .vt6{background-image:url('https://images.unsplash.com/photo-1583041398200-09b2205f6cf0?auto=format&fit=crop&w=400&q=70')}
+
+  /* FINISHES */
+  .fin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:820px){.fin-grid{grid-template-columns:1fr}}
+  .fin{background:#fff;border:1px solid var(--line);border-radius:5px;overflow:hidden;transition:.2s}
+  .fin:hover{transform:translateY(-4px);box-shadow:0 24px 46px -30px rgba(27,25,23,.5)}
+  .fin .photo{height:210px;background-size:cover;background-position:center}
+  .fin-veneer{background-image:url('https://images.unsplash.com/photo-1542020383883-6c6b2a343807?auto=format&fit=crop&w=700&q=72')}
+  .fin-laminate{background-image:url('https://images.unsplash.com/photo-1610177534644-34d881503b83?auto=format&fit=crop&w=700&q=72')}
+  .fin-paint{background-image:url('https://images.unsplash.com/photo-1518882542732-7b2826f7b1bd?auto=format&fit=crop&w=700&q=72')}
+  .fin .b{padding:24px}
+  .fin h3{font-size:23px}
+  .fin p{color:var(--muted);font-size:14.5px;margin:10px 0 16px}
+
+  /* ABOUT */
+  #about{background:var(--paper-2)}
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  @media(max-width:820px){.about{grid-template-columns:1fr;gap:36px}}
+  .about h2{font-size:clamp(28px,3.6vw,42px)}
+  .about h2 em{font-style:italic;color:var(--gold-deep)}
+  .about p{color:var(--muted);font-size:17px;margin:20px 0 24px;max-width:52ch}
+  .about .visual{aspect-ratio:5/4;border-radius:5px;background-size:cover;background-position:center;box-shadow:0 30px 60px -34px rgba(27,25,23,.6);background-image:url('https://images.unsplash.com/photo-1649083048770-82e8ffd80431?auto=format&fit=crop&w=900&q=75')}
+
+  /* CONTACT */
+  #contact{background:#1f3529;color:#f4efe6}
+  .contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px}
+  @media(max-width:840px){.contact{grid-template-columns:1fr;gap:40px}}
+  #contact .eyebrow{color:var(--gold)}
+  #contact h2{color:#fbf7ef;font-size:clamp(32px,4.4vw,52px);margin:14px 0 20px}
+  #contact .lead{color:rgba(244,239,230,.8);max-width:38ch;margin-bottom:30px}
+  .cline{display:flex;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--line-light);font-size:16px}
+  .cline b{color:var(--gold)}
+  .form{background:rgba(255,255,255,.04);border:1px solid var(--line-light);border-radius:6px;padding:30px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+  @media(max-width:520px){.frow{grid-template-columns:1fr}}
+  .field label{display:block;font-size:12px;color:rgba(244,239,230,.6);margin-bottom:6px}
+  .field input,.field select,.field textarea{width:100%;background:rgba(0,0,0,.25);border:1px solid var(--line-light);border-radius:3px;color:#f4efe6;padding:12px 13px;font:inherit;font-size:14px}
+  .field textarea{min-height:96px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+  .field select option{color:#111}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(244,239,230,.7);margin:8px 0 18px}
+  .consent input{margin-top:4px}
+
+  /* FOOTER */
+  footer{background:#16261d;color:rgba(244,239,230,.66);padding:64px 0 32px}
+  .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+  @media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.fgrid{grid-template-columns:1fr}}
+  .fgrid h4{font-family:'Inter';font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .fgrid a,.fgrid p{display:block;font-size:14px;color:rgba(244,239,230,.66);margin-bottom:9px}
+  .fgrid a:hover{color:#fff}
+  .fbrand .name{font-family:'Fraunces',serif;font-size:22px;color:#f4efe6;letter-spacing:.06em;margin-bottom:14px}
+  .fbrand .name b{color:var(--gold)}
+  .social{display:flex;gap:12px;margin-top:14px}
+  .social a{width:36px;height:36px;border:1px solid var(--line-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0}
+  .social a:hover{border-color:var(--gold);color:var(--gold)}
+  .fbottom{border-top:1px solid var(--line-light);margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:13px}
+  .fbottom a{margin-right:20px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar"><div class="wrap">
+    <div>Certified solid-core door sets · Made in India</div>
+    <div class="r"><a href="#contact">Become a dealer</a><a href="#contact">Download catalogue</a></div>
+  </div></div>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg class="logo-glyph" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="8" y="3" width="24" height="34" rx="1.5" fill="#a9763c"/>
+        <rect x="11.5" y="6.5" width="17" height="12" rx="1" fill="#382719"/>
+        <rect x="11.5" y="21" width="17" height="12.5" rx="1" fill="#382719"/>
+        <circle cx="25.5" cy="20" r="1.5" fill="#f4efe6"/>
+      </svg>
+      <span class="name">MAKS<b>.</b>DOORS</span>
+    </a>
+    <ul class="menu">
+      <li><a href="#products">Our Products <span class="caret">&#9662;</span></a>
+        <div class="dropdown">
+          <a href="#products">Fire-Rated Door Sets</a><a href="#products">Designer Door Sets</a>
+          <a href="#products">Speciality Door Sets</a><a href="#products">Dura Collection</a>
+        </div></li>
+      <li><a href="#spaces">Solutions <span class="caret">&#9662;</span></a>
+        <div class="dropdown">
+          <a href="#spaces">Residential</a><a href="#spaces">Commercial</a>
+          <a href="#spaces">Hospitality</a><a href="#spaces">Healthcare</a>
+        </div></li>
+      <li><a href="#finishes">Finishes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn" href="#contact">Get a quote</a>
+      <button class="hamburger" id="openMenu" aria-label="Open menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <button class="x" id="closeMenu" aria-label="Close menu">&times;</button>
+  <div class="grp">Products</div>
+  <a href="#products">Fire-Rated Door Sets</a><a href="#products">Designer Door Sets</a>
+  <a href="#products">Speciality Door Sets</a><a href="#products">Dura Collection</a>
+  <div class="grp">Explore</div>
+  <a href="#spaces">Solutions by Space</a><a href="#finishes">Finishes</a>
+  <a href="#about">About</a><a href="#contact">Contact</a>
+  <div style="margin-top:26px"><a class="btn" href="#contact" style="display:inline-flex">Get a quote</a></div>
+</div>
+
+<section class="hero" id="top" style="padding:0">
+  <div class="slide active s1"><div class="bg"></div>
+    <div class="wrap content">
+      <span class="eyebrow">One-stop wooden door solutions</span>
+      <h1>Doors built to perform, finished to impress.</h1>
+      <p>Factory-finished, ready-to-install door sets — leaf, frame and hardware, engineered as one.</p>
+      <div class="cta"><a class="btn" href="#products">Explore the range</a><a class="btn outline" href="#visualizer">Try the visualizer</a></div>
+    </div></div>
+  <div class="slide s2"><div class="bg"></div>
+    <div class="wrap content">
+      <span class="eyebrow">Fire-rated &amp; certified</span>
+      <h1>Safety you can shut behind you.</h1>
+      <p>Independently tested fire-rated door sets for homes, offices and public buildings.</p>
+      <div class="cta"><a class="btn" href="#products">See fire-rated doors</a></div>
+    </div></div>
+  <div class="slide s3"><div class="bg"></div>
+    <div class="wrap content">
+      <span class="eyebrow">Designer collection</span>
+      <h1>Find the perfect door for every space.</h1>
+      <p>Veneers, laminates and painted finishes in hundreds of combinations.</p>
+      <div class="cta"><a class="btn" href="#finishes">Browse finishes</a></div>
+    </div></div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Product range</span>
+      <h2 class="sec-title">Every door, delivered as a complete set.</h2>
+      <p>We supply the leaf, frame and ironmongery as a single factory-finished unit — a step beyond sourcing each part separately.</p>
+    </div>
+    <div class="prod-grid">
+      <a class="prod" href="#contact"><div class="photo p-fire"></div>
+        <div class="info"><h3>Fire-Rated Door Sets</h3><p>Certified fire protection engineered into a door you'll actually want to look at.</p><span class="explore">Explore <span>&rarr;</span></span></div></a>
+      <a class="prod" href="#contact"><div class="photo p-designer"></div>
+        <div class="info"><h3>Designer Door Sets</h3><p>Curated collections that balance clean design with everyday durability.</p><span class="explore">Explore <span>&rarr;</span></span></div></a>
+      <a class="prod" href="#contact"><div class="photo p-speciality"></div>
+        <div class="info"><h3>Speciality Door Sets</h3><p>Acoustic, moisture-resistant and security doors for demanding spaces.</p><span class="explore">Explore <span>&rarr;</span></span></div></a>
+      <a class="prod" href="#contact"><div class="photo p-dura"></div>
+        <div class="info"><h3>Dura Collection</h3><p>Built for durability and value — doors that fit your space and your budget.</p><span class="explore">Explore <span>&rarr;</span></span></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="spaces">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Solution by spaces</span><h2 class="sec-title">The right door for where it lives.</h2></div>
+    <div class="spaces-grid">
+      <a class="space sp1" href="#contact"><span class="lbl"><small>For your home</small>Residential</span></a>
+      <a class="space sp2" href="#contact"><span class="lbl"><small>Offices &amp; towers</small>Commercial</span></a>
+      <a class="space sp3" href="#contact"><span class="lbl"><small>Schools &amp; campuses</small>Education</span></a>
+      <a class="space sp4" href="#contact"><span class="lbl"><small>Stores &amp; showrooms</small>Retail</span></a>
+      <a class="space sp5" href="#contact"><span class="lbl"><small>Hotels &amp; resorts</small>Hospitality</span></a>
+      <a class="space sp6" href="#contact"><span class="lbl"><small>Clinics &amp; hospitals</small>Healthcare</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="visualizer">
+  <div class="wrap vz">
+    <div>
+      <span class="eyebrow">The ultimate door visualizer</span>
+      <h2>See it on your door before you order it.</h2>
+      <p>Try different veneers, laminates and paint colours on our door styles, and lock in the perfect match for your décor — before you place a single order.</p>
+      <a class="btn" href="#contact">Launch the visualizer</a>
+    </div>
+    <div class="vz-strip">
+      <div class="vz-tile vt1"></div><div class="vz-tile vt2"></div><div class="vz-tile vt3"></div>
+      <div class="vz-tile vt4"></div><div class="vz-tile vt5"></div><div class="vz-tile vt6"></div>
+    </div>
+  </div>
+</section>
+
+<section id="finishes">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Choose the right finish</span><h2 class="sec-title">Style and function, made to match.</h2>
+      <p>Pick from an extensive range of surfacing options for every look and every room.</p></div>
+    <div class="fin-grid">
+      <div class="fin"><div class="photo fin-veneer"></div><div class="b"><h3>Decorative Veneers</h3><p>Real-wood veneers in a wide spectrum of grains and tones for a natural, premium look.</p><span class="explore">Explore <span>&rarr;</span></span></div></div>
+      <div class="fin"><div class="photo fin-laminate"></div><div class="b"><h3>Decorative Laminates</h3><p>A near-limitless laminate library — hard-wearing, easy to clean and colour-fast.</p><span class="explore">Explore <span>&rarr;</span></span></div></div>
+      <div class="fin"><div class="photo fin-paint"></div><div class="b"><h3>Paint Finishes</h3><p>Fully painted in any RAL or British Standard colour, in matt, satin or gloss.</p><span class="explore">Explore <span>&rarr;</span></span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <span class="eyebrow">About us</span>
+      <h2>When we think of a door, we think of <em>wood — and the hands that shape it.</em></h2>
+      <p>MAKS Doors makes factory-finished, ready-to-install door sets for every room and purpose. Leaf, frame and ironmongery are engineered to work as one, tested to certified performance levels for durability and reliability across residential and commercial projects.</p>
+      <a class="btn dark" href="#contact">Read more</a>
+    </div>
+    <div class="visual"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div>
+      <span class="eyebrow">Get in touch</span>
+      <h2>Let's find your door.</h2>
+      <p class="lead">Have a question or need support? Our team is a click away.</p>
+      <div class="cline">&#9993; &nbsp;<b>Email</b>&nbsp; hello@maksdoors.com</div>
+      <div class="cline">&#9742; &nbsp;<b>Toll free</b>&nbsp; 1800 000 0000</div>
+      <div class="cline">&#128205; &nbsp;<b>Showroom</b>&nbsp; Trichy, Tamil Nadu, India</div>
+    </div>
+    <form class="form" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! Connect this form to your email or CRM to receive enquiries.');">
+      <div class="frow">
+        <div class="field"><label>Type of enquiry</label><select><option>Product enquiry</option><option>Price enquiry</option><option>Dealership</option><option>Catalogue / sample</option><option>Careers</option><option>Other</option></select></div>
+        <div class="field"><label>You are a</label><select><option>Home owner</option><option>Architect</option><option>Interior designer</option><option>Contractor</option><option>Builder / developer</option><option>Dealer</option><option>Other</option></select></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label>Name</label><input type="text" placeholder="Your name"></div>
+        <div class="field"><label>Phone</label><input type="tel" placeholder="+91 ..."></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+        <div class="field"><label>City</label><input type="text" placeholder="City"></div>
+      </div>
+      <div class="field" style="margin-bottom:16px"><label>Message</label><textarea placeholder="Tell us about your project — opening sizes, finishes, quantity…"></textarea></div>
+      <label class="consent"><input type="checkbox"> I consent to MAKS Doors storing my details to respond to this enquiry.</label>
+      <button class="btn" type="submit" style="width:100%;justify-content:center">Submit enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="name">MAKS<b>.</b>DOORS</div>
+        <p>Your street, Your area,<br>Trichy 620001, Tamil Nadu, India</p>
+        <p>+91 00 0000 0000<br>hello@maksdoors.com</p>
+        <div class="social"><a href="#">in</a><a href="#">ig</a><a href="#">&#9654;</a></div>
+      </div>
+      <div><h4>Solutions</h4>
+        <a href="#spaces">Residential</a><a href="#spaces">Commercial</a><a href="#spaces">Education</a>
+        <a href="#spaces">Retail</a><a href="#spaces">Hospitality</a><a href="#spaces">Healthcare</a></div>
+      <div><h4>Technicals</h4>
+        <a href="#products">Door Leaf</a><a href="#products">Door Frame</a><a href="#finishes">Surface Finishes</a>
+        <a href="#products">Ironmongery</a><a href="#products">Installation</a></div>
+      <div><h4>Resources</h4>
+        <a href="#contact">Catalogues</a><a href="#contact">Certifications</a><a href="#contact">Data Sheets</a>
+        <a href="#visualizer">Visualizer</a><a href="#contact">FAQs</a></div>
+    </div>
+    <div class="fbottom">
+      <div>&copy; <span id="yr"></span> MAKS Doors. All rights reserved.</div>
+      <div><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Sitemap</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var drawer=document.getElementById('drawer');
+  document.getElementById('openMenu').onclick=function(){drawer.classList.add('open')};
+  document.getElementById('closeMenu').onclick=function(){drawer.classList.remove('open')};
+  drawer.querySelectorAll('a').forEach(function(a){a.onclick=function(){drawer.classList.remove('open')}});
+
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dotsWrap=document.getElementById('dots'), i=0;
+  slides.forEach(function(_,n){var b=document.createElement('button');if(n===0)b.className='on';b.onclick=function(){go(n)};dotsWrap.appendChild(b)});
+  var dots=[].slice.call(dotsWrap.children);
+  function go(n){slides[i].classList.remove('active');dots[i].classList.remove('on');i=n;slides[i].classList.add('active');dots[i].classList.add('on')}
+  setInterval(function(){go((i+1)%slides.length)},5500);
+</script>
+</body>
+</html>
