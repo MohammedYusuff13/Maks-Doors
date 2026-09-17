@@ -353,26 +353,26 @@
       <span class="eyebrow">Get in touch</span>
       <h2>Let's find your door.</h2>
       <p class="lead">Have a question or need support? Our team is a click away.</p>
-      <div class="cline">&#9993; &nbsp;<b>Email</b>&nbsp; hello@maksdoors.com</div>
-      <div class="cline">&#9742; &nbsp;<b>Toll free</b>&nbsp; 1800 000 0000</div>
+      <div class="cline">&#9993; &nbsp;<b>Email</b>&nbsp; azardhoni007@gmail.com</div>
+      <div class="cline">&#9742; &nbsp;<b>Phone</b>&nbsp; +91 98424 96525</div>
       <div class="cline">&#128205; &nbsp;<b>Showroom</b>&nbsp; Trichy, Tamil Nadu, India</div>
     </div>
-    <form class="form" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! Connect this form to your email or CRM to receive enquiries.');">
+    <form class="form" onsubmit="sendWhatsApp(event)">
       <div class="frow">
-        <div class="field"><label>Type of enquiry</label><select><option>Product enquiry</option><option>Price enquiry</option><option>Dealership</option><option>Catalogue / sample</option><option>Careers</option><option>Other</option></select></div>
-        <div class="field"><label>You are a</label><select><option>Home owner</option><option>Architect</option><option>Interior designer</option><option>Contractor</option><option>Builder / developer</option><option>Dealer</option><option>Other</option></select></div>
+        <div class="field"><label>Type of enquiry</label><select id="f_type"><option>Product enquiry</option><option>Price enquiry</option><option>Dealership</option><option>Catalogue / sample</option><option>Careers</option><option>Other</option></select></div>
+        <div class="field"><label>You are a</label><select id="f_who"><option>Home owner</option><option>Architect</option><option>Interior designer</option><option>Contractor</option><option>Builder / developer</option><option>Dealer</option><option>Other</option></select></div>
       </div>
       <div class="frow">
-        <div class="field"><label>Name</label><input type="text" placeholder="Your name"></div>
-        <div class="field"><label>Phone</label><input type="tel" placeholder="+91 ..."></div>
+        <div class="field"><label>Name</label><input id="f_name" type="text" placeholder="Your name"></div>
+        <div class="field"><label>Phone</label><input id="f_phone" type="tel" placeholder="+91 ..."></div>
       </div>
       <div class="frow">
-        <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
-        <div class="field"><label>City</label><input type="text" placeholder="City"></div>
+        <div class="field"><label>Email</label><input id="f_email" type="email" placeholder="you@email.com"></div>
+        <div class="field"><label>City</label><input id="f_city" type="text" placeholder="City"></div>
       </div>
-      <div class="field" style="margin-bottom:16px"><label>Message</label><textarea placeholder="Tell us about your project — opening sizes, finishes, quantity…"></textarea></div>
+      <div class="field" style="margin-bottom:16px"><label>Message</label><textarea id="f_msg" placeholder="Tell us about your project — opening sizes, finishes, quantity…"></textarea></div>
       <label class="consent"><input type="checkbox"> I consent to MAKS Doors storing my details to respond to this enquiry.</label>
-      <button class="btn" type="submit" style="width:100%;justify-content:center">Submit enquiry</button>
+      <button class="btn" type="submit" style="width:100%;justify-content:center">Send on WhatsApp</button>
     </form>
   </div>
 </section>
@@ -383,7 +383,7 @@
       <div class="fbrand">
         <div class="name">MAKS<b>.</b>DOORS</div>
         <p>Your street, Your area,<br>Trichy 620001, Tamil Nadu, India</p>
-        <p>+91 00 0000 0000<br>hello@maksdoors.com</p>
+        <p>+91 98424 96525<br>azardhoni007@gmail.com</p>
         <div class="social"><a href="#">in</a><a href="#">ig</a><a href="#">&#9654;</a></div>
       </div>
       <div><h4>Solutions</h4>
@@ -416,6 +416,27 @@
   var dots=[].slice.call(dotsWrap.children);
   function go(n){slides[i].classList.remove('active');dots[i].classList.remove('on');i=n;slides[i].classList.add('active');dots[i].classList.add('on')}
   setInterval(function(){go((i+1)%slides.length)},5500);
+
+  // ----- enquiry form -> WhatsApp to MAKS Doors -----
+  // To change the receiving number, edit MAKS_WHATSAPP (country code + number, no + or spaces).
+  var MAKS_WHATSAPP = "919842496525";
+  function val(id){var el=document.getElementById(id);return el?el.value.trim():"";}
+  function sendWhatsApp(e){
+    e.preventDefault();
+    var lines = [
+      "New enquiry from MAKS Doors website",
+      "",
+      "Enquiry: " + val("f_type"),
+      "I am a: " + val("f_who"),
+      "Name: " + (val("f_name") || "-"),
+      "Phone: " + (val("f_phone") || "-"),
+      "Email: " + (val("f_email") || "-"),
+      "City: " + (val("f_city") || "-"),
+      "Message: " + (val("f_msg") || "-")
+    ];
+    var url = "https://wa.me/" + MAKS_WHATSAPP + "?text=" + encodeURIComponent(lines.join("\n"));
+    window.open(url, "_blank");
+  }
 </script>
 </body>
 </html>
